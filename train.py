@@ -72,10 +72,13 @@ if __name__ == "__main__":
     ep_count = int(args["--episode-count"])
     model_name = args["--model-name"]
     pretrained = args["--pretrained"]
+    switch_backend = args["--switch-backend"]
     debug = args["--debug"]
 
     coloredlogs.install(level="DEBUG")
-    switch_k_backend_device()
+
+    if switch_backend:
+      switch_k_backend_device()
 
     try:
         main(train_stock, val_stock, window_size, batch_size,
